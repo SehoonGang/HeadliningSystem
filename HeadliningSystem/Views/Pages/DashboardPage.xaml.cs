@@ -14,5 +14,13 @@ namespace HeadliningSystem.Views.Pages
 
             InitializeComponent();
         }
+
+        public void OnPageLoaded(object sender, EventArgs e)
+        {
+            if (ViewModel != null)
+            {
+                //ViewModel.PageWidth
+            }
+        }
     }
 }

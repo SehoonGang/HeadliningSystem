@@ -9,8 +9,8 @@
     Title="DashboardPage"
     d:DataContext="{d:DesignInstance local:DashboardPage,
                                      IsDesignTimeCreatable=False}"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignHeight="1000"
+    d:DesignWidth="1605"
     ui:Design.Background="{ui:ThemeResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
     Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
@@ -27,38 +27,170 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
-                <ui:Button Width="80" Height="33">
+                <ui:Button Width="120" Height="50" Margin="3,3,3,3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="pack://application:,,,/Assets/AutoIcon.png" Stretch="Uniform" Height="15" StretchDirection="DownOnly" Margin="0,0,5,0"/>
-                        <TextBlock>Auto</TextBlock>
+                        <TextBlock FontSize="20">Auto</TextBlock>
                     </StackPanel>                    
                 </ui:Button>
-                <ui:Button Width="80" Height="33">
+                <ui:Button Width="120" Height="50" Margin="3,3,3,3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="pack://application:,,,/Assets/AutoIcon.png" Stretch="Uniform" Height="15" StretchDirection="DownOnly" Margin="0,0,5,0"/>
-                        <TextBlock>Manual</TextBlock>
+                        <TextBlock FontSize="20">Manual</TextBlock>
                     </StackPanel>
                 </ui:Button>
-                <ui:Button Width="80" Height="33">
+                <ui:Button Width="120" Height="50" Margin="3,3,3,3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="pack://application:,,,/Assets/AutoIcon.png" Stretch="Uniform" Height="15" StretchDirection="DownOnly" Margin="0,0,5,0"/>
-                        <TextBlock>Set</TextBlock>
+                        <TextBlock FontSize="20">Set</TextBlock>
                     </StackPanel>
                 </ui:Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>            
-            <DockPanel LastChildFill="True" Grid.Column="1"  >
-                <ui:Card x:Name="CardHoleGlControl" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="245" />
-                <ui:Card VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="245" />
-            </DockPanel>
-            <StackPanel>
-                <StackPanel>
-                    <ui:Button />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <ui:Card x:Name="cardVehicleGlControl" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="497" Margin="3,3,3,3">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                            <TextBlock HorizontalAlignment="Stretch" Margin="0,0,0,3" FontSize="20">Vehicle</TextBlock>
+                            <ui:Card x:Name="glVehicleFrtControl" Width="467" Height="170" Margin="0,3,0,3">FRT</ui:Card>
+                            <ui:Card x:Name="glVehicleRrControl" Width="467" Height="170" Margin="0,3,0,3">RR</ui:Card>
+                        </StackPanel>
+                    </ui:Card>
+                    <ui:Card x:Name="CardPartGlControl" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="497" Margin="0,3,3,3">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Stretch" Margin="0,0,0,3" FontSize="20">Part</TextBlock>
+                            <ui:Card Width="467" Height="170" Margin="0,3,0,3">FRT</ui:Card>
+                            <ui:Card Width="467" Height="170" Margin="0,3,0,3">RR</ui:Card>
+                        </StackPanel>
+                    </ui:Card>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="4,8,6,3" FontSize="20">Car Type</TextBlock>
+                                <ComboBox Width="75" FontSize="18"></ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="4,8,3,3" FontSize="20">Object Id</TextBlock>
+                                <ComboBox Width="75" FontSize="18"></ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <ui:Button Width="100" Height="83" Margin="4,0,3,3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center" FontSize="18">Connect</TextBlock>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18">Camera</TextBlock>
+                            </StackPanel>
+                        </ui:Button>
+                        <ui:Button Width="100" Height="83" Margin="3,0,3,3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center" FontSize="18">Scan</TextBlock>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18">Point</TextBlock>
+                            </StackPanel>
+                        </ui:Button>
+                        <ui:Button Width="100" Height="83" Margin="3,0,3,3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center" FontSize="18">Calculate</TextBlock>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18">Pose</TextBlock>
+                            </StackPanel>
+                        </ui:Button>
+                        <ui:Button Width="100" Height="83" Margin="3,0,3,3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center" FontSize="18">Update</TextBlock>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18">Pose</TextBlock>
+                            </StackPanel>
+                        </ui:Button>
+                    </StackPanel>
+                    <TabControl HorizontalAlignment="Stretch" Margin="3,3,3,3">
+                        <TabItem>
+                            <TabItem.Header>
+                                <TextBlock HorizontalAlignment="Center" Width="246" FontSize="20">Robot Poses</TextBlock>
+                            </TabItem.Header>
+                            <Grid Height="350">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                            </Grid>
+                        </TabItem>
+                        <TabItem>
+                            <TabItem.Header>
+                                <TextBlock HorizontalAlignment="Center" Width="246" FontSize="20">Logs</TextBlock>
+                            </TabItem.Header>
+                            <RichTextBox Height="300">
+
+                            </RichTextBox>
+                        </TabItem>
+                    </TabControl>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="285" Height="160" Margin="3,3,3,3" Source="pack://application:,,,/Assets/visionOkOff.png" />
+                        <ui:Card HorizontalAlignment="Stretch" Width="250" Margin="3,3,3,3">
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="PLC Read Table" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="31"/>
+                                        <RowDefinition Height="31"/>
+                                        <RowDefinition Height="31"/>
+                                    </Grid.RowDefinitions>
+                                </Grid>
+                            </StackPanel>
+                        </ui:Card>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,3,0,3">
+                            <Ellipse Fill="Red" Width="14" Height="14" Margin="6,1,6,0" />
+                            <TextBlock FontSize="20">Camera Disconnected</TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,3,0,3">
+                            <Ellipse Fill="Red" Width="14" Height="14" Margin="6,1,6,0" />
+                            <TextBlock FontSize="20">PLC Disconnected</TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10,3,0,3">
+                            <Ellipse Fill="Red" Width="14" Height="14" Margin="6,1,6,0" />
+                            <TextBlock FontSize="20">Hyundai Robot Disconnected</TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10,3,0,3">
+                            <Ellipse Fill="Red" Width="14" Height="14" Margin="6,1,6,0" />
+                            <TextBlock FontSize="20">Fanuc Robot Disconnected</TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="400" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0"  Source="pack://application:,,,/Assets/cle_logo.png" />
+                    </Grid>
                 </StackPanel>
             </StackPanel>
         </Grid>
