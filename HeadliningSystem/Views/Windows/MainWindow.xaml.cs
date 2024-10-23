@@ -1,4 +1,5 @@
 ﻿using HeadliningSystem.ViewModels.Windows;
+using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
@@ -27,6 +28,8 @@ namespace HeadliningSystem.Views.Windows
             this.SourceInitialized += MainWindow_SourceInitialized;
             SetPageService(pageService);
             navigationService.SetNavigationControl(RootNavigation);
+
+            AllocConsole();
         }
 
         private void MainWindow_SourceInitialized(object? sender, EventArgs e)
@@ -52,6 +55,12 @@ namespace HeadliningSystem.Views.Windows
             }
             return IntPtr.Zero;
         }
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool AllocConsole();
+
+
 
         #region INavigationWindow methods
 

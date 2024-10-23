@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:HeadliningSystem.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:gl="clr-namespace:HeadliningSystem.Views.Controls"
     Title="DashboardPage"
     d:DataContext="{d:DesignInstance local:DashboardPage,
                                      IsDesignTimeCreatable=False}"
@@ -133,18 +134,86 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <StackPanel Orientation="Horizontal">
-                    <ui:Card x:Name="cardVehicleGlControl" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="497" Margin="3,3,3,3">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-                            <TextBlock HorizontalAlignment="Stretch" Margin="0,0,0,3" FontSize="20">Vehicle</TextBlock>
-                            <ui:Card x:Name="glVehicleFrtControl" Width="467" Height="170" Margin="0,3,0,3">FRT</ui:Card>
-                            <ui:Card x:Name="glVehicleRrControl" Width="467" Height="170" Margin="0,3,0,3">RR</ui:Card>
+                    <StackPanel.Resources>
+                        <Style TargetType="ui:Card">
+                            <Setter Property="Width" Value="467" />
+                            <Setter Property="Height" Value="370" />
+                            <Setter Property="Margin" Value="0,3,0,3" />
+                        </Style>
+                        <Style TargetType="gl:GlControl">
+                            <Setter Property="Width" Value="450" />
+                            <Setter Property="Height" Value="410"/>
+                            <Setter Property="Margin" Value="5,5,5,5"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <ui:Card x:Name="cardVehicleGlControl" HorizontalAlignment="Left" Width="497" Height="850" Margin="3,3,3,3">
+                        <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                            <TextBlock HorizontalAlignment="Stretch" Margin="0,10,0,3" FontSize="20">Vehicle</TextBlock>
+                            <ui:Card>
+                                <StackPanel Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                    <TextBlock Grid.Column="0" FontSize="18" Margin="10,5,0,3" >FRT</TextBlock>
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                    </StackPanel>
+                                    <gl:GlControl x:Name="glVehicleFrtControl" Background="Black"></gl:GlControl>
+                                </StackPanel>
+                            </ui:Card>
+                            <ui:Card>
+                                <StackPanel Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                    <TextBlock Grid.Column="0" FontSize="18" Margin="10,5,0,3">RR</TextBlock>
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                    </StackPanel>
+                                    <gl:GlControl x:Name="glVehicleRrControl" Background="Black"></gl:GlControl>
+                                </StackPanel>
+                            </ui:Card>
                         </StackPanel>
                     </ui:Card>
-                    <ui:Card x:Name="CardPartGlControl" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="497" Margin="0,3,3,3">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock HorizontalAlignment="Stretch" Margin="0,0,0,3" FontSize="20">Part</TextBlock>
-                            <ui:Card Width="467" Height="170" Margin="0,3,0,3">FRT</ui:Card>
-                            <ui:Card Width="467" Height="170" Margin="0,3,0,3">RR</ui:Card>
+                    <ui:Card x:Name="cardPartGlControl" HorizontalAlignment="Left" Width="497" Height="850" Margin="3,3,3,3">
+                        <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                            <TextBlock HorizontalAlignment="Stretch" Margin="0,10,0,3" FontSize="20">Vehicle</TextBlock>
+                            <ui:Card>
+                                <StackPanel Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                    <TextBlock Grid.Column="0" FontSize="18" Margin="10,5,0,3" >FRT</TextBlock>
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                    </StackPanel>
+                                    <gl:GlControl x:Name="glPartFrtControl" Background="Black"></gl:GlControl>
+                                </StackPanel>
+                            </ui:Card>
+                            <ui:Card>
+                                <StackPanel Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                    <TextBlock Grid.Column="0" FontSize="18" Margin="10,5,0,3">RR</TextBlock>
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                    </StackPanel>
+                                    <gl:GlControl x:Name="glPartRrControl" Background="Black"></gl:GlControl>
+                                </StackPanel>
+                            </ui:Card>
                         </StackPanel>
                     </ui:Card>
                 </StackPanel>
