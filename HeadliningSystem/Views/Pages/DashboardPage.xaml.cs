@@ -1,5 +1,7 @@
 ﻿using HeadliningSystem.ViewModels.Pages;
 using Wpf.Ui.Controls;
+using OpenTK;
+using OpenTK.GLControl;
 
 namespace HeadliningSystem.Views.Pages
 {
