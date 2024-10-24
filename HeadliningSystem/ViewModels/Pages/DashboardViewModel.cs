@@ -1,4 +1,5 @@
-﻿using HeadliningSystem.Models;
+﻿using CoPick.Setting;
+using HeadliningSystem.Models;
 using System.ComponentModel;
 using System.Security.Cryptography;
 
@@ -16,6 +17,10 @@ namespace HeadliningSystem.ViewModels.Pages
         private bool _isHyundaiRobotConnected = false;
         private bool _isFanucRobotConnected = false;
         private Config _config;
+        public DashboardViewModel(Config config)
+        {
+            _config = config;
+        }
 
         public bool IsCameraConnected
         {
@@ -69,11 +74,40 @@ namespace HeadliningSystem.ViewModels.Pages
             IsCameraConnected = !IsCameraConnected;
         }
 
-        public DashboardViewModel(Config config)
+        [RelayCommand]
+        private void OnAutoMode()
         {
-            _config = config;
+            ChangeMode(OperationMode.Auto);
         }
 
+        [RelayCommand]
+        private void OnManualMode()
+        {
+            ChangeMode(OperationMode.Manual);
+        }
+
+        [RelayCommand]
+        private void OnSettingMode()
+        {
+            ChangeMode(OperationMode.Set);
+        }
+
+        private void ChangeMode(OperationMode mode)
+        {
+            switch(mode)
+            {
+                case OperationMode.Auto:
+                    
+                    break;
+                case OperationMode.Manual:
+                    
+                    break;
+                default:
+                   
+                    break;
+            }
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
         {
