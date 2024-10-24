@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using HeadliningSystem.Models;
+using System.ComponentModel;
 using System.Security.Cryptography;
 
 namespace HeadliningSystem.ViewModels.Pages
@@ -14,6 +15,7 @@ namespace HeadliningSystem.ViewModels.Pages
         private bool _isPlcConnected = false;
         private bool _isHyundaiRobotConnected = false;
         private bool _isFanucRobotConnected = false;
+        private Config _config;
 
         public bool IsCameraConnected
         {
@@ -65,6 +67,11 @@ namespace HeadliningSystem.ViewModels.Pages
         private void OnConnectCamera()
         {
             IsCameraConnected = !IsCameraConnected;
+        }
+
+        public DashboardViewModel(Config config)
+        {
+            _config = config;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

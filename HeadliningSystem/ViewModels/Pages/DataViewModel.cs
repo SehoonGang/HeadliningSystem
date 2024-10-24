@@ -7,9 +7,15 @@ namespace HeadliningSystem.ViewModels.Pages
     public partial class DataViewModel : ObservableObject, INavigationAware
     {
         private bool _isInitialized = false;
+        private Config _config;
 
         [ObservableProperty]
         private IEnumerable<DataColor> _colors;
+
+        public DataViewModel(Config config)
+        {
+            _config = config;
+        }
 
         public void OnNavigatedTo()
         {

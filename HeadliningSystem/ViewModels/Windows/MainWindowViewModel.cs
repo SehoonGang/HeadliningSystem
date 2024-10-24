@@ -1,10 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using HeadliningSystem.Models;
+using System.Collections.ObjectModel;
 using Wpf.Ui.Controls;
 
 namespace HeadliningSystem.ViewModels.Windows
 {
     public partial class MainWindowViewModel : ObservableObject
     {
+        Config _config;
+
         [ObservableProperty]
         private string _applicationTitle = "Headlining Auto Mounting System";
 
@@ -64,5 +67,10 @@ namespace HeadliningSystem.ViewModels.Windows
         {
             new MenuItem { Header = "Home", Tag = "tray_home" }
         };
+
+        public MainWindowViewModel(Config config)
+        {
+            _config = config;
+        }
     }
 }

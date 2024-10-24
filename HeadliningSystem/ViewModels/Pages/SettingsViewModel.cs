@@ -1,4 +1,5 @@
-﻿using Wpf.Ui.Appearance;
+﻿using HeadliningSystem.Models;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
 namespace HeadliningSystem.ViewModels.Pages
@@ -6,6 +7,7 @@ namespace HeadliningSystem.ViewModels.Pages
     public partial class SettingsViewModel : ObservableObject, INavigationAware
     {
         private bool _isInitialized = false;
+        private Config _config;
 
         [ObservableProperty]
         private string _appVersion = String.Empty;
@@ -58,6 +60,11 @@ namespace HeadliningSystem.ViewModels.Pages
 
                     break;
             }
+        }
+
+        public SettingsViewModel(Config config)
+        {
+            _config = config;
         }
     }
 }

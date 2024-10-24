@@ -1,4 +1,6 @@
-﻿using HeadliningSystem.Services;
+﻿using CoPick.Setting;
+using HeadliningSystem.Models;
+using HeadliningSystem.Services;
 using HeadliningSystem.ViewModels.Pages;
 using HeadliningSystem.ViewModels.Windows;
 using HeadliningSystem.Views.Pages;
@@ -23,6 +25,9 @@ namespace HeadliningSystem
         // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
         // https://docs.microsoft.com/dotnet/core/extensions/configuration
         // https://docs.microsoft.com/dotnet/core/extensions/logging
+
+        static Config config = ConfigFileManager.LoadFromFile<Config>(ConfigFileManager.GetConfigFilePath());
+
         private static readonly IHost _host = Host
             .CreateDefaultBuilder()
             .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
@@ -44,14 +49,16 @@ namespace HeadliningSystem
 
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();
-                services.AddSingleton<MainWindowViewModel>();
+                services.AddSingleton(new MainWindowViewModel(config));
 
                 services.AddSingleton<DashboardPage>();
-                services.AddSingleton<DashboardViewModel>();
+                services.AddSingleton(new DashboardViewModel(config));
+
                 services.AddSingleton<DataPage>();
-                services.AddSingleton<DataViewModel>();
+                services.AddSingleton(new DataViewModel(config));
+
                 services.AddSingleton<SettingsPage>();
-                services.AddSingleton<SettingsViewModel>();
+                services.AddSingleton(new SettingsViewModel(config));
             }).Build();
 
         /// <summary>
@@ -78,8 +85,8 @@ namespace HeadliningSystem
         /// </summary>
         private async void OnExit(object sender, ExitEventArgs e)
         {
+            ConfigFileManager.SaveToFile(config, ConfigFileManager.GetConfigFilePath());
             await _host.StopAsync();
-
             _host.Dispose();
         }
 
