@@ -30,6 +30,7 @@ namespace HeadliningSystem
             {
                 services.AddHostedService<ApplicationHostService>();
 
+                services.AddSingleton<LoggerService>();
                 // Page resolver service
                 services.AddSingleton<IPageService, PageService>();
 
@@ -46,7 +47,10 @@ namespace HeadliningSystem
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
 
-                services.AddSingleton<DashboardPage>();
+                DashboardViewModel dashboardViewModel = new();
+                DashboardPage dashboardPage = new DashboardPage(dashboardViewModel);
+                services.AddSingleton(dashboardPage);
+
                 services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<DataPage>();
                 services.AddSingleton<DataViewModel>();

@@ -1,4 +1,6 @@
-﻿using HeadliningSystem.ViewModels.Windows;
+﻿using CoPick.Logging;
+using HeadliningSystem.Services;
+using HeadliningSystem.ViewModels.Windows;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using Wpf.Ui;
@@ -9,6 +11,8 @@ namespace HeadliningSystem.Views.Windows
 {
     public partial class MainWindow : INavigationWindow
     {
+        private static readonly LoggerService Logger = LoggerService.Logger;
+
         public MainWindowViewModel ViewModel { get; }
         const int WM_SYSCOMMAND = 0x0112;
         const int SC_MOVE = 0xF010;
@@ -24,6 +28,8 @@ namespace HeadliningSystem.Views.Windows
             SystemThemeWatcher.Watch(this);
 
             InitializeComponent();
+
+            Logger.LogPath = "./LOG";
             
             this.SourceInitialized += MainWindow_SourceInitialized;
             SetPageService(pageService);

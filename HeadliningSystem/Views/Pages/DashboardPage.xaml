@@ -255,7 +255,7 @@
                             </StackPanel>
                         </ui:Button>
                     </StackPanel>
-                    <TabControl HorizontalAlignment="Stretch" Margin="3,3,3,3">
+                    <TabControl x:Name="tabControlPoseAndLog" HorizontalAlignment="Stretch" Margin="3,3,3,3">
                         <TabItem>
                             <TabItem.Header>
                                 <TextBlock HorizontalAlignment="Center" Width="266" FontSize="20">Robot Poses</TextBlock>

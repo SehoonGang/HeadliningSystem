@@ -13,6 +13,7 @@ namespace HeadliningSystem.ViewModels.Windows
         {
             new NavigationViewItem()
             {
+                Content = "Operate",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
                 TargetPageType = typeof(Views.Pages.DashboardPage)
             },
