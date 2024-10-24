@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:gl="clr-namespace:HeadliningSystem.Views.Controls"
+    xmlns:helper="clr-namespace:HeadliningSystem.Helpers"
     Title="DashboardPage"
     d:DataContext="{d:DesignInstance local:DashboardPage,
                                      IsDesignTimeCreatable=False}"
@@ -16,6 +17,9 @@
     ui:Design.Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
     Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <helper:BooleanToConnectionColorConverter x:Key="BooleanToConnectionColorConverter"/>
+    </Page.Resources>
 
     <Grid VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
@@ -230,7 +234,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         
-                        <ui:Button Width="132" Height="65" Margin="7,5,5,3">
+                        <ui:Button Width="132" Height="65" Margin="7,5,5,3" Command="{Binding ViewModel.ConnectCameraCommand}">
                             <StackPanel Orientation="Vertical">
                                 <TextBlock HorizontalAlignment="Center" FontSize="18">Connect</TextBlock>
                                 <TextBlock HorizontalAlignment="Center" FontSize="18">Camera</TextBlock>
@@ -295,19 +299,19 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,3,0,3">
-                                <Ellipse Fill="Red" Width="14" Height="14" Margin="6,-4,6,0" />
+                                <Ellipse Fill="{Binding ViewModel.IsCameraConnected, Converter= {StaticResource BooleanToConnectionColorConverter}, Mode=OneWay}" Width="14" Height="14" Margin="6,-4,6,0" />
                                 <TextBlock FontSize="18">Camera Disconnected</TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,3,0,3">
-                                <Ellipse Fill="Red" Width="14" Height="14" Margin="6,-4,6,0" />
+                                <Ellipse Fill="{Binding ViewModel.IsPlcConnected, Converter={StaticResource BooleanToConnectionColorConverter}, Mode=OneWay}" Width="14" Height="14" Margin="6,-4,6,0" />
                                 <TextBlock FontSize="18">PLC Disconnected</TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10,3,0,3">
-                                <Ellipse Fill="Red" Width="14" Height="14" Margin="6,-4,6,0" />
+                                <Ellipse Fill="{Binding ViewModel.IsHyundaiRobotConnected, Converter={StaticResource BooleanToConnectionColorConverter}, Mode=OneWay}" Width="14" Height="14" Margin="6,-4,6,0" />
                                 <TextBlock FontSize="18">Hyundai Robot Disconnected</TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10,3,0,3">
-                                <Ellipse Fill="Red" Width="14" Height="14" Margin="6,-4,6,0" />
+                                <Ellipse Fill="{Binding ViewModel.IsFanucRobotConnected, Converter={StaticResource BooleanToConnectionColorConverter}, Mode=OneWay}" Width="14" Height="14" Margin="6,-4,6,0" />
                                 <TextBlock FontSize="18">Fanuc Robot Disconnected</TextBlock>
                             </StackPanel>
                         </Grid>
